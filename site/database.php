@@ -1,8 +1,15 @@
 <?php
 
-$dbhost = "mariadb";
-$dbuser = "root";
-$dbpass = "password";
-$dbname = "restaurant_herkansing";
+    // Database configuratie
+    $servername  = "mariadb";
+    $username = "root";
+    $password = "password";
+    $dbname = "UltraHard";
 
-$conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
+    // Maak een  database connectie
+    try {
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
+?>
