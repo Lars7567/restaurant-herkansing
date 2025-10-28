@@ -1,4 +1,5 @@
 <?php
+
 require 'database.php';
 
 $sql = "SELECT * FROM opties";
@@ -11,7 +12,12 @@ $opties = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <nav class="navbar navbar-expand-lg shadow-sm navbar-light d-flex align-items-center w-100">
     <a href="index.php"><img src="uploads/UltraHard_logo.png" class="logo" alt="UltraHard logo"></a>
     <ul class="navbar-nav d-flex flex-row justify-content-center mx-auto">
-        <li class="text"><a href="index.php">HOME</a></li>
+
+        <?php if (isset($_SESSION['isIngelogd']) && $_SESSION['isIngelogd'] === true): ?>
+            <li class="text"><a href="dashboard.php">HOME</a></li>
+        <?php else: ?>
+            <li class="text"><a href="index.php">HOME</a></li>
+        <?php endif; ?>
         <li class="text"><a href="pakketen.php">PAKKETTEN</a></li>
         <li class="text"><a href="about.php">ABOUT</a></li>
         <li class="text"><a href="contact.php">CONTACT</a></li>
@@ -24,8 +30,14 @@ $opties = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 </svg>
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
-                <li><a class="dropdown-item" href="#">LOGIN</a></li>
-                <li><a class="dropdown-item" href="#">AANMELDEN</a></li>
+            <?php if (isset($_SESSION['isIngelogd']) && $_SESSION['isIngelogd'] === true): ?>
+                <li><span class="dropdown-item">Welkom, <?php echo htmlspecialchars($_SESSION['naam']); ?>!</span></li>
+                <li><a class="dropdown-item" href="profiel.php">Profiel</a></li>
+                <li><a class="dropdown-item" href="uitloggen.php">Uitloggen</a></li>
+            <?php else: ?>
+                <li><a class="dropdown-item" href="login.php">Inloggen</a></li>
+                <li><a class="dropdown-item" href="registratie.php">Aanmelden</a></li>
+            <?php endif; ?>
             </ul>
         </li>
     </ul>

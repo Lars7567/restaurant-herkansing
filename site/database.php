@@ -1,6 +1,4 @@
 <?php
-
-    // Database configuratie
     $servername  = "mariadb";
     $username = "root";
     $password = "password";
@@ -13,3 +11,4 @@
         echo "Error: " . $e->getMessage();
     }
 ?>
+

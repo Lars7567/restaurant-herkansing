@@ -1,3 +1,9 @@
+<?php 
+
+ob_start();
+session_start();
+
+?>
 <?php
 require 'database.php';
 ?>

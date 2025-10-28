@@ -1,3 +1,9 @@
+<?php 
+
+ob_start();
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,11 +17,13 @@
 <?php include 'nav.php'; ?>
 
 <div class="about w-100% bg-light mb-4 d-flex justify-content-center align-items-center">
+    <h1>Contactformulier</h1>
 </div>
+
 <form action="verstuur_mail.php" method="post">
     <div class="container mt-5 card-auto p-4">
         <div class="card mx-auto card-body text-center" style="max-width: 80%;">
-            <h1>Contactformulier</h1>
+
             <p>Voer uw gegevens in:</p>
             <div class="row justify-content-center g-2 mt-3">
                 <div class="col-md-100%">
